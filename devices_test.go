@@ -14,8 +14,24 @@ func TestGetMCU(t *testing.T) {
 		t.Errorf("MCU not found for 0x910b")
 	}
 
-	if mcu.Name != "ATtiny24" {
-		t.Errorf("Bad MCU name: %s", mcu.Name)
+	if m := mcu.Name; m != "ATtiny24" {
+		t.Errorf("Bad MCU name: %s", m)
+	}
+
+	if m := mcu.EECR.Io8(); m != 0x1c {
+		t.Errorf("Bad EECR.Io8(): 0x%02x", m)
+	}
+
+	if m := mcu.EECR.Io16(); m != 0x1c {
+		t.Errorf("Bad EECR.Io16(): 0x%04x", m)
+	}
+
+	if m := mcu.EECR.Mem8(); m != 0x3c {
+		t.Errorf("Bad EECR.Mem8(): 0x%02x", m)
+	}
+
+	if m := mcu.EECR.Mem16(); m != 0x3c {
+		t.Errorf("Bad EECR.Mem16(): 0x%04x", m)
 	}
 }
 
@@ -29,7 +45,7 @@ func TestGetMCUError(t *testing.T) {
 		t.Errorf("Returned MCU for invalid signature: %s", mcu.Name)
 	}
 
-	if err.Error() != "devices: MCU lookup failed for signature: 0xdead" {
-		t.Errorf("Bad error message: %s", err)
+	if e := err.Error(); e != "devices: MCU lookup failed for signature: 0xdead" {
+		t.Errorf("Bad error message: %s", e)
 	}
 }

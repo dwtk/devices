@@ -90,7 +90,6 @@ func findDevices() ([]deviceType, error) {
 		if err != nil {
 			return nil
 		}
-		eecr -= 0x20
 
 		witheearh := false
 		if eearreg := xmlquery.FindOne(eeprommodule, "register[@name='EEAR']"); eearreg != nil {
