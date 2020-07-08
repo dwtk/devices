@@ -53,11 +53,11 @@ func (m *MCU) EEPROMSize() uint16 {
 }
 
 func (m *MCU) EECR() SFR {
-	return SFR{uint16(m.eecr), 1}
+	return SFR{m.eecr, 1}
 }
 
 func (m *MCU) EEDR() SFR {
-	return SFR{uint16(m.eecr) + 1, 1}
+	return SFR{m.eecr + 1, 1}
 }
 
 func (m *MCU) EEAR() SFR {
@@ -65,7 +65,7 @@ func (m *MCU) EEAR() SFR {
 	if m.withEEARH {
 		s++
 	}
-	return SFR{uint16(m.eecr) + 2, s}
+	return SFR{m.eecr + 2, s}
 }
 
 func (m *MCU) SPMCSR() SFR {
