@@ -17,7 +17,6 @@ type MCU struct {
 	withEEARH     bool
 	withSPH       bool
 	dwenMask      byte
-	withRWW       bool
 }
 
 func GetMCU(signature uint16) (*MCU, error) {
@@ -87,8 +86,4 @@ func (m *MCU) SREG() SFR {
 
 func (m *MCU) DWENMask() byte {
 	return m.dwenMask
-}
-
-func (m *MCU) WithRWW() bool {
-	return m.withRWW
 }

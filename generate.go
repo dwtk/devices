@@ -24,7 +24,6 @@ type deviceType struct {
 	witheearh     bool
 	withsph       bool
 	dwenmask      byte
-	withrww       bool
 }
 
 func findDevices() ([]deviceType, error) {
@@ -126,8 +125,6 @@ func findDevices() ([]deviceType, error) {
 			return nil
 		}
 
-		withrww := xmlquery.FindOne(doc, "//bitfield[@name='BOOTRST']") != nil
-
 		devices = append(devices, deviceType{
 			name:          name,
 			signature:     signature,
@@ -139,7 +136,6 @@ func findDevices() ([]deviceType, error) {
 			witheearh:     witheearh,
 			withsph:       withsph,
 			dwenmask:      byte(dwenmask),
-			withrww:       withrww,
 		})
 		return nil
 	})
@@ -205,8 +201,7 @@ func main() {
 		fmt.Fprintf(f, "0x%02x, ", device.eecr)
 		fmt.Fprintf(f, "%v, ", device.witheearh)
 		fmt.Fprintf(f, "%v, ", device.withsph)
-		fmt.Fprintf(f, "%s, ", formatBitmask(device.dwenmask))
-		fmt.Fprintf(f, "%v", device.withrww)
+		fmt.Fprintf(f, "%s", formatBitmask(device.dwenmask))
 		fmt.Fprintf(f, "},\n")
 	}
 	fmt.Fprintf(f, "}\n")
