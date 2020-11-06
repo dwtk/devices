@@ -819,6 +819,9 @@
         <value caption="TCD0 WOA input source" name="TCD0" value="0x09"/>
         <value caption="USART0 XCK input source" name="USART0" value="0x0A"/>
         <value caption="SPI0 SCK source" name="SPI0" value="0x0B"/>
+        <value caption="AC1 OUT input source" name="AC1" value="0x0C"/>
+        <value caption="TCB1 WO input source" name="TCB1" value="0x0D"/>
+        <value caption="AC2 OUT input source" name="AC2" value="0x0E"/>
       </value-group>
       <value-group caption="LUT Input 1 Source Selection select" name="CCL_INSEL1">
         <value caption="Masked input" name="MASK" value="0x00"/>
@@ -833,6 +836,9 @@
         <value caption="TCD0 WOB input source" name="TCD0" value="0x09"/>
         <value caption="USART0 TXD input source" name="USART0" value="0x0A"/>
         <value caption="SPI0 MOSI input source" name="SPI0" value="0x0B"/>
+        <value caption="AC1 OUT input source" name="AC1" value="0x0C"/>
+        <value caption="TCB1 WO input source" name="TCB1" value="0x0D"/>
+        <value caption="AC2 OUT input source" name="AC2" value="0x0E"/>
       </value-group>
       <value-group caption="LUT Input 2 Source Selection select" name="CCL_INSEL2">
         <value caption="Masked input" name="MASK" value="0x00"/>
@@ -846,6 +852,9 @@
         <value caption="TCA0 WO2 input source" name="TCA0" value="0x08"/>
         <value caption="TCD0 WOA input source" name="TCD0" value="0x09"/>
         <value caption="SPI0 MISO source" name="SPI0" value="0x0B"/>
+        <value caption="AC1 OUT input source" name="AC1" value="0x0C"/>
+        <value caption="TCB1 WO input source" name="TCB1" value="0x0D"/>
+        <value caption="AC2 OUT input source" name="AC2" value="0x0E"/>
       </value-group>
       <value-group caption="Sequential Selection select" name="CCL_SEQSEL">
         <value caption="Sequential logic disabled" name="DISABLE" value="0x00"/>

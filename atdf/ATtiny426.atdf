@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><avr-tools-device-file xmlns:NumHelper="NumHelper" xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema-version="4.4" xsi:noNamespaceSchemaLocation="schema/avr_tools_device_file.xsd">
   <variants>
-    <variant ordercode="ATtiny1626-MFR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-MUR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-SFR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-SUR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny426-MFR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny426-MUR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny426-SFR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny426-SUR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
   </variants>
   <devices>
-    <device architecture="AVR8X" family="tinyAVR 2" name="ATtiny1626">
+    <device architecture="AVR8X" family="tinyAVR 2" name="ATtiny426">
       <address-spaces>
         <address-space endianness="little" id="data" name="data" size="0x10000" start="0x0000">
-          <memory-segment exec="0" name="EEPROM" pagesize="0x20" rw="RW" size="0x0100" start="0x00001400" type="eeprom"/>
+          <memory-segment exec="0" name="EEPROM" pagesize="0x20" rw="RW" size="0x0080" start="0x00001400" type="eeprom"/>
           <memory-segment exec="0" name="FUSES" pagesize="0x20" rw="RW" size="0xA" start="0x00001280" type="fuses"/>
-          <memory-segment exec="0" name="INTERNAL_SRAM" rw="RW" size="0x0800" start="0x3800" type="ram"/>
+          <memory-segment exec="0" name="INTERNAL_SRAM" rw="RW" size="0x0200" start="0x3e00" type="ram"/>
           <memory-segment exec="0" name="IO" rw="RW" size="0x1100" start="0x00000000" type="io"/>
           <memory-segment exec="0" name="LOCKBITS" pagesize="0x20" rw="RW" size="0x1" start="0x0000128A" type="lockbits"/>
-          <memory-segment exec="0" name="MAPPED_PROGMEM" pagesize="0x40" rw="RW" size="0x4000" start="0x00008000" type="other"/>
+          <memory-segment exec="0" name="MAPPED_PROGMEM" pagesize="0x40" rw="RW" size="0x1000" start="0x00008000" type="other"/>
           <memory-segment exec="0" name="PROD_SIGNATURES" pagesize="0x40" rw="R" size="0x3D" start="0x00001103" type="signatures"/>
           <memory-segment exec="0" name="SIGNATURES" pagesize="0x40" rw="R" size="0x3" start="0x00001100" type="signatures"/>
           <memory-segment exec="0" name="USER_SIGNATURES" pagesize="0x20" rw="RW" size="0x20" start="0x00001300" type="user_signatures"/>
         </address-space>
-        <address-space endianness="little" id="prog" name="prog" size="0x4000" start="0x0000">
-          <memory-segment exec="1" name="PROGMEM" pagesize="0x40" rw="RW" size="0x4000" start="0x00000000" type="flash"/>
+        <address-space endianness="little" id="prog" name="prog" size="0x1000" start="0x0000">
+          <memory-segment exec="1" name="PROGMEM" pagesize="0x40" rw="RW" size="0x1000" start="0x00000000" type="flash"/>
         </address-space>
       </address-spaces>
       <peripherals>
@@ -390,8 +390,8 @@
         </property-group>
         <property-group name="SIGNATURES">
           <property name="SIGNATURE0" value="0x1E"/>
-          <property name="SIGNATURE1" value="0x94"/>
-          <property name="SIGNATURE2" value="0x29"/>
+          <property name="SIGNATURE1" value="0x92"/>
+          <property name="SIGNATURE2" value="0x2B"/>
         </property-group>
       </property-groups>
     </device>

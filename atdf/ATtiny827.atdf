@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><avr-tools-device-file xmlns:NumHelper="NumHelper" xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema-version="4.4" xsi:noNamespaceSchemaLocation="schema/avr_tools_device_file.xsd">
   <variants>
-    <variant ordercode="ATtiny1626-MFR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-MUR" package="VQFN20" pinout="QFN20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-SFR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
-    <variant ordercode="ATtiny1626-SUR" package="SOIC20" pinout="SOIC20" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny827-MFR" package="VQFN24" pinout="QFN24" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
+    <variant ordercode="ATtiny827-MUR" package="VQFN24" pinout="QFN24" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
   </variants>
   <devices>
-    <device architecture="AVR8X" family="tinyAVR 2" name="ATtiny1626">
+    <device architecture="AVR8X" family="tinyAVR 2" name="ATtiny827">
       <address-spaces>
         <address-space endianness="little" id="data" name="data" size="0x10000" start="0x0000">
-          <memory-segment exec="0" name="EEPROM" pagesize="0x20" rw="RW" size="0x0100" start="0x00001400" type="eeprom"/>
+          <memory-segment exec="0" name="EEPROM" pagesize="0x20" rw="RW" size="0x0080" start="0x00001400" type="eeprom"/>
           <memory-segment exec="0" name="FUSES" pagesize="0x20" rw="RW" size="0xA" start="0x00001280" type="fuses"/>
-          <memory-segment exec="0" name="INTERNAL_SRAM" rw="RW" size="0x0800" start="0x3800" type="ram"/>
+          <memory-segment exec="0" name="INTERNAL_SRAM" rw="RW" size="0x0400" start="0x3c00" type="ram"/>
           <memory-segment exec="0" name="IO" rw="RW" size="0x1100" start="0x00000000" type="io"/>
           <memory-segment exec="0" name="LOCKBITS" pagesize="0x20" rw="RW" size="0x1" start="0x0000128A" type="lockbits"/>
-          <memory-segment exec="0" name="MAPPED_PROGMEM" pagesize="0x40" rw="RW" size="0x4000" start="0x00008000" type="other"/>
+          <memory-segment exec="0" name="MAPPED_PROGMEM" pagesize="0x40" rw="RW" size="0x2000" start="0x00008000" type="other"/>
           <memory-segment exec="0" name="PROD_SIGNATURES" pagesize="0x40" rw="R" size="0x3D" start="0x00001103" type="signatures"/>
           <memory-segment exec="0" name="SIGNATURES" pagesize="0x40" rw="R" size="0x3" start="0x00001100" type="signatures"/>
           <memory-segment exec="0" name="USER_SIGNATURES" pagesize="0x20" rw="RW" size="0x20" start="0x00001300" type="user_signatures"/>
         </address-space>
-        <address-space endianness="little" id="prog" name="prog" size="0x4000" start="0x0000">
-          <memory-segment exec="1" name="PROGMEM" pagesize="0x40" rw="RW" size="0x4000" start="0x00000000" type="flash"/>
+        <address-space endianness="little" id="prog" name="prog" size="0x2000" start="0x0000">
+          <memory-segment exec="1" name="PROGMEM" pagesize="0x40" rw="RW" size="0x2000" start="0x00000000" type="flash"/>
         </address-space>
       </address-spaces>
       <peripherals>
@@ -35,6 +33,7 @@
               <signal function="AC0" group="P" index="0" pad="PA7"/>
               <signal function="AC0" group="P" index="1" pad="PB5"/>
               <signal function="AC0" group="P" index="2" pad="PB1"/>
+              <signal function="AC0" group="P" index="3" pad="PB6"/>
             </signals>
           </instance>
         </module>
@@ -75,16 +74,20 @@
               <signal field="PORTMUX.CCLROUTEA.LUT0" function="CCL_ALT" group="LUT0_OUT" index="0" pad="PB4"/>
               <signal field="PORTMUX.CCLROUTEA.LUT0" function="CCL" group="LUT0_OUT" index="0" pad="PA4"/>
               <signal field="PORTMUX.CCLROUTEA.LUT1" function="CCL_IN" group="LUT1_IN" index="0" pad="PC3"/>
+              <signal field="PORTMUX.CCLROUTEA.LUT1" function="CCL_IN" group="LUT1_IN" index="1" pad="PC4"/>
+              <signal field="PORTMUX.CCLROUTEA.LUT1" function="CCL_IN" group="LUT1_IN" index="2" pad="PC5"/>
               <signal field="PORTMUX.CCLROUTEA.LUT1" function="CCL_ALT" group="LUT1_OUT" index="0" pad="PC1"/>
               <signal field="PORTMUX.CCLROUTEA.LUT1" function="CCL" group="LUT1_OUT" index="0" pad="PA7"/>
               <signal field="PORTMUX.CCLROUTEA.LUT2" function="CCL_IN" group="LUT2_IN" index="0" pad="PB0"/>
               <signal field="PORTMUX.CCLROUTEA.LUT2" function="CCL_IN" group="LUT2_IN" index="1" pad="PB1"/>
               <signal field="PORTMUX.CCLROUTEA.LUT2" function="CCL_IN" group="LUT2_IN" index="2" pad="PB2"/>
+              <signal field="PORTMUX.CCLROUTEA.LUT2" function="CCL_ALT" group="LUT2_OUT" index="0" pad="PB6"/>
               <signal field="PORTMUX.CCLROUTEA.LUT2" function="CCL" group="LUT2_OUT" index="0" pad="PB3"/>
               <signal field="PORTMUX.CCLROUTEA.LUT3" function="CCL_IN" group="LUT3_IN" index="0" pad="PC0"/>
               <signal field="PORTMUX.CCLROUTEA.LUT3" function="CCL_IN" group="LUT3_IN" index="1" pad="PC1"/>
               <signal field="PORTMUX.CCLROUTEA.LUT3" function="CCL_IN" group="LUT3_IN" index="2" pad="PC2"/>
               <signal field="PORTMUX.CCLROUTEA.LUT3" function="CCL_ALT" group="LUT3_OUT" index="0" pad="PA5"/>
+              <signal field="PORTMUX.CCLROUTEA.LUT3" function="CCL" group="LUT3_OUT" index="0" pad="PC4"/>
             </signals>
           </instance>
         </module>
@@ -104,6 +107,7 @@
             <register-group address-space="data" name="CPU" name-in-module="CPU" offset="0x0030"/>
             <signals>
               <signal function="OTHER" group="BREAK" pad="PA1"/>
+              <signal function="OTHER" group="BREAK_ALT" pad="PC4"/>
             </signals>
             <parameters>
               <param name="CORE_VERSION" value="V4"/>
@@ -126,6 +130,7 @@
             <signals>
               <signal field="PORTMUX.EVSYSROUTEA.EVOUTA" function="EVSYS_ALT" group="EVOUT" index="0" pad="PA7"/>
               <signal field="PORTMUX.EVSYSROUTEA.EVOUTA" function="EVSYS" group="EVOUT" index="0" pad="PA2"/>
+              <signal field="PORTMUX.EVSYSROUTEA.EVOUTB" function="EVSYS_ALT" group="EVOUT" index="1" pad="PB7"/>
               <signal field="PORTMUX.EVSYSROUTEA.EVOUTB" function="EVSYS" group="EVOUT" index="1" pad="PB2"/>
               <signal field="PORTMUX.EVSYSROUTEA.EVOUTC" function="EVSYS" group="EVOUT" index="2" pad="PC2"/>
             </signals>
@@ -179,6 +184,8 @@
               <signal function="IOPORT" group="PIN" index="3" pad="PB3"/>
               <signal function="IOPORT" group="PIN" index="4" pad="PB4"/>
               <signal function="IOPORT" group="PIN" index="5" pad="PB5"/>
+              <signal function="IOPORT" group="PIN" index="6" pad="PB6"/>
+              <signal function="IOPORT" group="PIN" index="7" pad="PB7"/>
             </signals>
           </instance>
           <instance name="PORTC">
@@ -188,6 +195,8 @@
               <signal function="IOPORT" group="PIN" index="1" pad="PC1"/>
               <signal function="IOPORT" group="PIN" index="2" pad="PC2"/>
               <signal function="IOPORT" group="PIN" index="3" pad="PC3"/>
+              <signal function="IOPORT" group="PIN" index="4" pad="PC4"/>
+              <signal function="IOPORT" group="PIN" index="5" pad="PC5"/>
             </signals>
           </instance>
         </module>
@@ -255,7 +264,9 @@
               <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA" group="WO" index="2" pad="PB2"/>
               <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA_ALT" group="WO" index="3" pad="PC3"/>
               <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA" group="WO" index="3" pad="PA3"/>
+              <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA_ALT" group="WO" index="4" pad="PC4"/>
               <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA" group="WO" index="4" pad="PA4"/>
+              <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA_ALT" group="WO" index="5" pad="PC5"/>
               <signal field="PORTMUX.TCAROUTEA.TCA0" function="TCA" group="WO" index="5" pad="PA5"/>
             </signals>
           </instance>
@@ -271,6 +282,7 @@
           <instance name="TCB1">
             <register-group address-space="data" name="TCB1" name-in-module="TCB" offset="0x0A90"/>
             <signals>
+              <signal field="PORTMUX.TCBROUTEA.TCB1" function="TCB1_ALT" group="WO" index="0" pad="PC4"/>
               <signal field="PORTMUX.TCBROUTEA.TCB1" function="TCB1" group="WO" index="0" pad="PA3"/>
             </signals>
           </instance>
@@ -390,8 +402,8 @@
         </property-group>
         <property-group name="SIGNATURES">
           <property name="SIGNATURE0" value="0x1E"/>
-          <property name="SIGNATURE1" value="0x94"/>
-          <property name="SIGNATURE2" value="0x29"/>
+          <property name="SIGNATURE1" value="0x93"/>
+          <property name="SIGNATURE2" value="0x27"/>
         </property-group>
       </property-groups>
     </device>
@@ -448,6 +460,7 @@
         <value caption="Positive Pin 0" name="PIN0" value="0x00"/>
         <value caption="Positive Pin 2" name="PIN2" value="0x02"/>
         <value caption="Positive Pin 1" name="PIN1" value="0x01"/>
+        <value caption="Positive Pin 3" name="PIN3" value="0x03"/>
       </value-group>
     </module>
     <module caption="Analog to Digital Converter" id="adc_12b_diff_ctrl_v2" name="ADC">
@@ -1139,6 +1152,8 @@
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
         <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x4C"/>
         <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x4D"/>
+        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x4E"/>
+        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x4F"/>
       </value-group>
       <value-group caption="Channel 1 generator select select" name="EVSYS_CHANNEL1">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1183,6 +1198,8 @@
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
         <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x4C"/>
         <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x4D"/>
+        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x4E"/>
+        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x4F"/>
       </value-group>
       <value-group caption="Channel 2 generator select select" name="EVSYS_CHANNEL2">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1225,6 +1242,8 @@
         <value caption="Port C Pin 1" name="PORTC_PIN1" value="0x41"/>
         <value caption="Port C Pin 2" name="PORTC_PIN2" value="0x42"/>
         <value caption="Port C Pin 3" name="PORTC_PIN3" value="0x43"/>
+        <value caption="Port C Pin 4" name="PORTC_PIN4" value="0x44"/>
+        <value caption="Port C Pin 5" name="PORTC_PIN5" value="0x45"/>
       </value-group>
       <value-group caption="Channel 3 generator select select" name="EVSYS_CHANNEL3">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1267,6 +1286,8 @@
         <value caption="Port C Pin 1" name="PORTC_PIN1" value="0x41"/>
         <value caption="Port C Pin 2" name="PORTC_PIN2" value="0x42"/>
         <value caption="Port C Pin 3" name="PORTC_PIN3" value="0x43"/>
+        <value caption="Port C Pin 4" name="PORTC_PIN4" value="0x44"/>
+        <value caption="Port C Pin 5" name="PORTC_PIN5" value="0x45"/>
       </value-group>
       <value-group caption="Channel 4 generator select select" name="EVSYS_CHANNEL4">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1303,10 +1324,14 @@
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
         <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x44"/>
         <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x45"/>
+        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x46"/>
+        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x47"/>
         <value caption="Port C Pin 0" name="PORTC_PIN0" value="0x48"/>
         <value caption="Port C Pin 1" name="PORTC_PIN1" value="0x49"/>
         <value caption="Port C Pin 2" name="PORTC_PIN2" value="0x4A"/>
         <value caption="Port C Pin 3" name="PORTC_PIN3" value="0x4B"/>
+        <value caption="Port C Pin 4" name="PORTC_PIN4" value="0x4C"/>
+        <value caption="Port C Pin 5" name="PORTC_PIN5" value="0x4D"/>
       </value-group>
       <value-group caption="Channel 5 generator select select" name="EVSYS_CHANNEL5">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1343,10 +1368,14 @@
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
         <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x44"/>
         <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x45"/>
+        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x46"/>
+        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x47"/>
         <value caption="Port C Pin 0" name="PORTC_PIN0" value="0x48"/>
         <value caption="Port C Pin 1" name="PORTC_PIN1" value="0x49"/>
         <value caption="Port C Pin 2" name="PORTC_PIN2" value="0x4A"/>
         <value caption="Port C Pin 3" name="PORTC_PIN3" value="0x4B"/>
+        <value caption="Port C Pin 4" name="PORTC_PIN4" value="0x4C"/>
+        <value caption="Port C Pin 5" name="PORTC_PIN5" value="0x4D"/>
       </value-group>
       <value-group caption="Software event on channel select" name="EVSYS_SWEVENTA">
         <value caption="Software event on channel 0" name="CH0" value="0x01"/>
@@ -1699,8 +1728,10 @@
       </value-group>
       <value-group caption="CCL LUT2 select" name="PORTMUX_LUT2">
         <value caption="Out: PB3 In: PB0, PB1, PB2" name="DEFAULT" value="0x0"/>
+        <value caption="Out: PB6 In: PB0, PB1, PB2" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="CCL LUT3 select" name="PORTMUX_LUT3">
+        <value caption="Out: PC4 In: PC0, PC1, PC2" name="DEFAULT" value="0x0"/>
         <value caption="Out: PA5 In: PC0, PC1, PC2" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Event Output A select" name="PORTMUX_EVOUTA">
@@ -1709,6 +1740,7 @@
       </value-group>
       <value-group caption="Event Output B select" name="PORTMUX_EVOUTB">
         <value caption="EVOUT on PB2" name="DEFAULT" value="0x0"/>
+        <value caption="EVOUT on PB7" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Event Output C select" name="PORTMUX_EVOUTC">
         <value caption="EVOUT on PC2" name="DEFAULT" value="0x0"/>
@@ -1736,9 +1768,11 @@
       </value-group>
       <value-group caption="Port Multiplexer TCA0 Output 4 select" name="PORTMUX_TCA04">
         <value caption="WO4 on PA4" name="DEFAULT" value="0x0"/>
+        <value caption="WO4 on PC4" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Port Multiplexer TCA0 Output 5 select" name="PORTMUX_TCA05">
         <value caption="WO5 on PA5" name="DEFAULT" value="0x0"/>
+        <value caption="WO5 on PC5" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Port Multiplexer TCB0 select" name="PORTMUX_TCB0">
         <value caption="WO on PA5" name="DEFAULT" value="0x0"/>
@@ -1746,6 +1780,7 @@
       </value-group>
       <value-group caption="Port Multiplexer TCB1 select" name="PORTMUX_TCB1">
         <value caption="WO on PA3" name="DEFAULT" value="0x0"/>
+        <value caption="WO on PC4" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Port Multiplexer USART0 select" name="PORTMUX_USART0">
         <value caption="USART0 on PB[3:0]" name="DEFAULT" value="0x0"/>
@@ -2567,49 +2602,31 @@
     </module>
   </modules>
   <pinouts>
-    <pinout name="QFN20">
+    <pinout name="QFN24">
       <pin pad="PA2" position="1"/>
       <pin pad="PA3" position="2"/>
-      <pin pad="GND" position="3"/>
+      <pin pad="GND1" position="3"/>
       <pin pad="VCC" position="4"/>
       <pin pad="PA4" position="5"/>
       <pin pad="PA5" position="6"/>
       <pin pad="PA6" position="7"/>
       <pin pad="PA7" position="8"/>
-      <pin pad="PB5" position="9"/>
-      <pin pad="PB4" position="10"/>
-      <pin pad="PB3" position="11"/>
-      <pin pad="PB2" position="12"/>
-      <pin pad="PB1" position="13"/>
-      <pin pad="PB0" position="14"/>
-      <pin pad="PC0" position="15"/>
-      <pin pad="PC1" position="16"/>
-      <pin pad="PC2" position="17"/>
-      <pin pad="PC3" position="18"/>
-      <pin pad="PA0" position="19"/>
-      <pin pad="PA1" position="20"/>
-    </pinout>
-    <pinout name="SOIC20">
-      <pin pad="VCC" position="1"/>
-      <pin pad="PA4" position="2"/>
-      <pin pad="PA5" position="3"/>
-      <pin pad="PA6" position="4"/>
-      <pin pad="PA7" position="5"/>
-      <pin pad="PB5" position="6"/>
-      <pin pad="PB4" position="7"/>
-      <pin pad="PB3" position="8"/>
-      <pin pad="PB2" position="9"/>
-      <pin pad="PB1" position="10"/>
-      <pin pad="PB0" position="11"/>
-      <pin pad="PC0" position="12"/>
-      <pin pad="PC1" position="13"/>
-      <pin pad="PC2" position="14"/>
-      <pin pad="PC3" position="15"/>
-      <pin pad="PA0" position="16"/>
-      <pin pad="PA1" position="17"/>
-      <pin pad="PA2" position="18"/>
-      <pin pad="PA3" position="19"/>
-      <pin pad="GND1" position="20"/>
+      <pin pad="PB7" position="9"/>
+      <pin pad="PB6" position="10"/>
+      <pin pad="PB5" position="11"/>
+      <pin pad="PB4" position="12"/>
+      <pin pad="PB3" position="13"/>
+      <pin pad="PB2" position="14"/>
+      <pin pad="PB1" position="15"/>
+      <pin pad="PB0" position="16"/>
+      <pin pad="PC0" position="17"/>
+      <pin pad="PC1" position="18"/>
+      <pin pad="PC2" position="19"/>
+      <pin pad="PC3" position="20"/>
+      <pin pad="PC4" position="21"/>
+      <pin pad="PC5" position="22"/>
+      <pin pad="PA0" position="23"/>
+      <pin pad="PA1" position="24"/>
     </pinout>
   </pinouts>
 </avr-tools-device-file>

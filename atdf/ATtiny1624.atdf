@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><avr-tools-device-file xmlns:NumHelper="NumHelper" xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema-version="0.3" xsi:noNamespaceSchemaLocation="schema/avr_tools_device_file.xsd">
+<?xml version="1.0" encoding="UTF-8"?><avr-tools-device-file xmlns:NumHelper="NumHelper" xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema-version="4.4" xsi:noNamespaceSchemaLocation="schema/avr_tools_device_file.xsd">
   <variants>
     <variant ordercode="ATtiny1624-SSFR" package="SOIC14" pinout="SOIC14" speedmax="20000000" tempmax="125" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
     <variant ordercode="ATtiny1624-SSUR" package="SOIC14" pinout="SOIC14" speedmax="20000000" tempmax="85" tempmin="-40" vccmax="5.5" vccmin="1.8"/>
   </variants>
   <devices>
-    <device architecture="AVR8X" family="AVR TINY" name="ATtiny1624">
+    <device architecture="AVR8X" family="tinyAVR 2" name="ATtiny1624">
       <address-spaces>
-        <address-space endianness="little" id="data" name="data" size="0xC000" start="0x0000">
+        <address-space endianness="little" id="data" name="data" size="0x10000" start="0x0000">
           <memory-segment exec="0" name="EEPROM" pagesize="0x20" rw="RW" size="0x0100" start="0x00001400" type="eeprom"/>
           <memory-segment exec="0" name="FUSES" pagesize="0x20" rw="RW" size="0xA" start="0x00001280" type="fuses"/>
           <memory-segment exec="0" name="INTERNAL_SRAM" rw="RW" size="0x0800" start="0x3800" type="ram"/>
@@ -22,7 +22,7 @@
         </address-space>
       </address-spaces>
       <peripherals>
-        <module id="I2106" name="AC">
+        <module id="cmp_control_avr_v3" name="AC">
           <instance name="AC0">
             <register-group address-space="data" name="AC0" name-in-module="AC" offset="0x0680"/>
             <signals>
@@ -34,7 +34,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2140" name="ADC">
+        <module id="adc_12b_diff_ctrl_v2" name="ADC">
           <instance name="ADC0">
             <register-group address-space="data" name="ADC0" name-in-module="ADC" offset="0x0600"/>
             <signals>
@@ -50,15 +50,12 @@
             </signals>
           </instance>
         </module>
-        <module id="I2114" name="BOD">
+        <module id="bor_lvd_ctrl_avr_v1" name="BOD">
           <instance name="BOD">
             <register-group address-space="data" name="BOD" name-in-module="BOD" offset="0x0080"/>
-            <signals>
-              <signal function="OTHER" group="VLM_OUT" pad="PA5"/>
-            </signals>
           </instance>
         </module>
-        <module id="I2128" name="CCL">
+        <module id="cla_ccl_v1" name="CCL">
           <instance name="CCL">
             <register-group address-space="data" name="CCL" name-in-module="CCL" offset="0x01C0"/>
             <signals>
@@ -75,7 +72,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2113" name="CLKCTRL">
+        <module id="chip" name="CLKCTRL">
           <instance name="CLKCTRL">
             <register-group address-space="data" name="CLKCTRL" name-in-module="CLKCTRL" offset="0x0060"/>
             <signals>
@@ -85,7 +82,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2100" name="CPU">
+        <module id="cpu_avr_v2" name="CPU">
           <instance name="CPU">
             <register-group address-space="data" name="CPU" name-in-module="CPU" offset="0x0030"/>
             <signals>
@@ -96,52 +93,52 @@
             </parameters>
           </instance>
         </module>
-        <module id="I2104" name="CPUINT">
+        <module id="int_8bit_v3" name="CPUINT">
           <instance name="CPUINT">
             <register-group address-space="data" name="CPUINT" name-in-module="CPUINT" offset="0x0110"/>
           </instance>
         </module>
-        <module id="I2122" name="CRCSCAN">
+        <module id="math_pdi_crc_avr_v1" name="CRCSCAN">
           <instance name="CRCSCAN">
             <register-group address-space="data" name="CRCSCAN" name-in-module="CRCSCAN" offset="0x0120"/>
           </instance>
         </module>
-        <module id="I2118" name="EVSYS">
+        <module id="ev_ctrl_v1" name="EVSYS">
           <instance name="EVSYS">
             <register-group address-space="data" name="EVSYS" name-in-module="EVSYS" offset="0x0180"/>
             <signals>
-              <signal field="PORTMUX.EVSYSROUTEA.EVOUT0" function="EVSYS_ALT" group="EVOUT" index="0" pad="PA7"/>
-              <signal field="PORTMUX.EVSYSROUTEA.EVOUT0" function="EVSYS" group="EVOUT" index="0" pad="PA2"/>
-              <signal field="PORTMUX.EVSYSROUTEA.EVOUT1" function="EVSYS" group="EVOUT" index="1" pad="PB2"/>
+              <signal field="PORTMUX.EVSYSROUTEA.EVOUTA" function="EVSYS_ALT" group="EVOUT" index="0" pad="PA7"/>
+              <signal field="PORTMUX.EVSYSROUTEA.EVOUTA" function="EVSYS" group="EVOUT" index="0" pad="PA2"/>
+              <signal field="PORTMUX.EVSYSROUTEA.EVOUTB" function="EVSYS" group="EVOUT" index="1" pad="PB2"/>
             </signals>
           </instance>
         </module>
-        <module id="I2600" name="FUSE">
+        <module id="chip" name="FUSE">
           <instance name="FUSE">
             <register-group address-space="data" name="FUSE" name-in-module="FUSE" offset="0x1280"/>
           </instance>
         </module>
-        <module id="I2600" name="GPIO">
+        <module id="chip" name="GPIO">
           <instance name="GPIO">
             <register-group address-space="data" name="GPIO" name-in-module="GPIO" offset="0x001C"/>
           </instance>
         </module>
-        <module id="I2600" name="LOCKBIT">
+        <module id="chip" name="LOCKBIT">
           <instance name="LOCKBIT">
             <register-group address-space="data" name="LOCKBIT" name-in-module="LOCKBIT" offset="0x128A"/>
           </instance>
         </module>
-        <module id="I2109" name="NVMBIST">
+        <module id="nvm_ctrl_avr_v2" name="NVMBIST">
           <instance name="NVMBIST">
             <register-group address-space="data" name="NVMBIST" name-in-module="NVMBIST" offset="0x0C0"/>
           </instance>
         </module>
-        <module id="I2109" name="NVMCTRL">
+        <module id="nvm_ctrl_avr_v2" name="NVMCTRL">
           <instance name="NVMCTRL">
             <register-group address-space="data" name="NVMCTRL" name-in-module="NVMCTRL" offset="0x1000"/>
           </instance>
         </module>
-        <module id="I2103" name="PORT">
+        <module id="gpio_ports_avr_v1" name="PORT">
           <instance name="PORTA">
             <register-group address-space="data" name="PORTA" name-in-module="PORT" offset="0x0400"/>
             <signals>
@@ -168,12 +165,12 @@
             <register-group address-space="data" name="PORTC" name-in-module="PORT" offset="0x0440"/>
           </instance>
         </module>
-        <module id="I2600" name="PORTMUX">
+        <module id="chip" name="PORTMUX">
           <instance name="PORTMUX">
             <register-group address-space="data" name="PORTMUX" name-in-module="PORTMUX" offset="0x05E0"/>
           </instance>
         </module>
-        <module id="I2111" name="RSTCTRL">
+        <module id="rst_integration_avr_v1" name="RSTCTRL">
           <instance name="RSTCTRL">
             <register-group address-space="data" name="RSTCTRL" name-in-module="RSTCTRL" offset="0x0040"/>
             <signals>
@@ -181,22 +178,22 @@
             </signals>
           </instance>
         </module>
-        <module id="I2116" name="RTC">
+        <module id="tmr_16b_rtc_v1" name="RTC">
           <instance name="RTC">
             <register-group address-space="data" name="RTC" name-in-module="RTC" offset="0x0140"/>
           </instance>
         </module>
-        <module id="I2600" name="SIGROW">
+        <module id="chip" name="SIGROW">
           <instance name="SIGROW">
             <register-group address-space="data" name="SIGROW" name-in-module="SIGROW" offset="0x1100"/>
           </instance>
         </module>
-        <module id="I2112" name="SLPCTRL">
+        <module id="clk_sleep_ctrl_avr_v1" name="SLPCTRL">
           <instance name="SLPCTRL">
             <register-group address-space="data" name="SLPCTRL" name-in-module="SLPCTRL" offset="0x0050"/>
           </instance>
         </module>
-        <module id="I2107" name="SPI">
+        <module id="spi_8bit_v2" name="SPI">
           <instance name="SPI0">
             <register-group address-space="data" name="SPI0" name-in-module="SPI" offset="0x08C0"/>
             <signals>
@@ -207,7 +204,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2600" name="SYSCFG">
+        <module id="chip" name="SYSCFG">
           <instance name="SYSCFG">
             <register-group address-space="data" name="SYSCFG" name-in-module="SYSCFG" offset="0x0F00"/>
             <signals>
@@ -215,7 +212,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2117" name="TCA">
+        <module id="tmr_16b_pwm_v1" name="TCA">
           <instance name="TCA0">
             <register-group address-space="data" name="TCA0" name-in-module="TCA" offset="0x0A00"/>
             <signals>
@@ -229,7 +226,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2119" name="TCB">
+        <module id="tmr_16b_capture_v1" name="TCB">
           <instance name="TCB0">
             <register-group address-space="data" name="TCB0" name-in-module="TCB" offset="0x0A80"/>
             <signals>
@@ -243,7 +240,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2110" name="TWI">
+        <module id="i2c_8bit_avr_v1" name="TWI">
           <instance name="TWI0">
             <register-group address-space="data" name="TWI0" name-in-module="TWI" offset="0x08A0"/>
             <signals>
@@ -252,7 +249,7 @@
             </signals>
           </instance>
         </module>
-        <module id="I2108" name="USART">
+        <module id="uart_autobd_v4" name="USART">
           <instance name="USART0">
             <register-group address-space="data" name="USART0" name-in-module="USART" offset="0x0800"/>
             <signals>
@@ -276,12 +273,12 @@
             </signals>
           </instance>
         </module>
-        <module id="I2603" name="USERROW">
+        <module id="chip" name="USERROW">
           <instance name="USERROW">
             <register-group address-space="data" name="USERROW" name-in-module="USERROW" offset="0x1300"/>
           </instance>
         </module>
-        <module id="I2103" name="VPORT">
+        <module id="gpio_ports_avr_v1" name="VPORT">
           <instance name="VPORTA">
             <register-group address-space="data" name="VPORTA" name-in-module="VPORT" offset="0x0000"/>
           </instance>
@@ -292,12 +289,12 @@
             <register-group address-space="data" name="VPORTC" name-in-module="VPORT" offset="0x0008"/>
           </instance>
         </module>
-        <module id="I2600" name="VREF">
+        <module id="chip" name="VREF">
           <instance name="VREF">
             <register-group address-space="data" name="VREF" name-in-module="VREF" offset="0x00A0"/>
           </instance>
         </module>
-        <module id="I2127" name="WDT">
+        <module id="wdt_windowed_avr_v1" name="WDT">
           <instance name="WDT">
             <register-group address-space="data" name="WDT" name-in-module="WDT" offset="0x0100"/>
           </instance>
@@ -361,7 +358,7 @@
     </device>
   </devices>
   <modules>
-    <module caption="Analog Comparator" id="I2106" name="AC">
+    <module caption="Analog Comparator" id="cmp_control_avr_v3" name="AC">
       <register-group caption="Analog Comparator" name="AC" size="0x8">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Enable" mask="0x1" name="ENABLE" rw="RW"/>
@@ -372,7 +369,7 @@
           <bitfield caption="Run in Standby Mode" mask="0x80" name="RUNSTDBY" rw="RW"/>
         </register>
         <register caption="Referance scale control" initval="0xFF" name="DACREF" offset="0x4" rw="RW" size="1">
-          <bitfield caption="DAC voltage reference" mask="0xff" name="DATA" rw="RW"/>
+          <bitfield caption="DACREF Data Value" mask="0xff" name="DACREF" rw="RW"/>
         </register>
         <register caption="Interrupt Control" initval="0x00" name="INTCTRL" offset="0x6" rw="RW" size="1">
           <bitfield caption="Analog Comparator 0 Interrupt Enable" mask="0x1" name="CMP" rw="RW"/>
@@ -404,18 +401,15 @@
       </value-group>
       <value-group caption="Negative Input MUX Selection select" name="AC_MUXNEG">
         <value caption="Negative Pin 0" name="PIN0" value="0x00"/>
-        <value caption="Negative Pin 1" name="PIN1" value="0x01"/>
         <value caption="Negative Pin 2" name="PIN2" value="0x02"/>
         <value caption="DAC Voltage Reference" name="DACREF" value="0x03"/>
       </value-group>
       <value-group caption="Positive Input MUX Selection select" name="AC_MUXPOS">
         <value caption="Positive Pin 0" name="PIN0" value="0x00"/>
-        <value caption="Positive Pin 1" name="PIN1" value="0x01"/>
         <value caption="Positive Pin 2" name="PIN2" value="0x02"/>
-        <value caption="Positive Pin 3" name="PIN3" value="0x03"/>
       </value-group>
     </module>
-    <module caption="Analog to Digital Converter" id="I2140" name="ADC">
+    <module caption="Analog to Digital Converter" id="adc_12b_diff_ctrl_v2" name="ADC">
       <register-group caption="Analog to Digital Converter" name="ADC" size="0x40">
         <register caption="Command register" initval="0x00" name="COMMAND" offset="0x0A" rw="RW" size="1">
           <bitfield caption="Differential mode" mask="0x80" name="DIFF" rw="RW"/>
@@ -571,7 +565,7 @@
         <value caption="ADC input pin 7" name="AIN7" value="0x07"/>
         <value caption="Ground" name="GND" value="0x30"/>
         <value caption="VDD/10" name="VDDDIV10" value="0x31"/>
-        <value caption="DAC" name="DAC" value="0x33"/>
+        <value caption="DACREF from AC0" name="DACREF0" value="0x33"/>
       </value-group>
       <value-group caption="VIA select" name="ADC_VIA">
         <value caption="Via ADC" name="ADC" value="0x00"/>
@@ -585,18 +579,12 @@
         <value caption="ADC input pin 5" name="AIN5" value="0x05"/>
         <value caption="ADC input pin 6" name="AIN6" value="0x06"/>
         <value caption="ADC input pin 7" name="AIN7" value="0x07"/>
-        <value caption="ADC input pin 8" name="AIN8" value="0x08"/>
-        <value caption="ADC input pin 9" name="AIN9" value="0x09"/>
         <value caption="ADC input pin 10" name="AIN10" value="0x0A"/>
         <value caption="ADC input pin 11" name="AIN11" value="0x0B"/>
-        <value caption="ADC input pin 12" name="AIN12" value="0x0C"/>
-        <value caption="ADC input pin 13" name="AIN13" value="0x0D"/>
-        <value caption="ADC input pin 14" name="AIN14" value="0x0E"/>
-        <value caption="ADC input pin 15" name="AIN15" value="0x0F"/>
         <value caption="Ground" name="GND" value="0x30"/>
         <value caption="VDD/10" name="VDDDIV10" value="0x31"/>
         <value caption="Temperature sensor" name="TEMPSENSE" value="0x32"/>
-        <value caption="DAC" name="DAC" value="0x33"/>
+        <value caption="DACREF from AC0" name="DACREF0" value="0x33"/>
       </value-group>
       <value-group caption="ADC PGA Sample Duration select" name="ADC_ADCPGASAMPDUR">
         <value caption="6 ADC cycles" name="6CLK" value="0x0"/>
@@ -612,13 +600,13 @@
         <value caption="16X Gain" name="16X" value="0x4"/>
       </value-group>
       <value-group caption="PGA BIAS Select select" name="ADC_PGABIASSEL">
-        <value caption="1x BIAS curren" name="1X" value="0x0"/>
+        <value caption="1x BIAS current" name="1X" value="0x0"/>
         <value caption="3/4x BIAS current" name="3_4X" value="0x1"/>
         <value caption="1/2x BIAS current" name="1_2X" value="0x2"/>
         <value caption="1/4x BIAS current" name="1_4X" value="0x3"/>
       </value-group>
     </module>
-    <module caption="Bod interface" id="I2114" name="BOD">
+    <module caption="Bod interface" id="bor_lvd_ctrl_avr_v1" name="BOD">
       <register-group caption="Bod interface" name="BOD" size="0x10">
         <register caption="Control A" initval="0x05" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Operation in active mode" mask="0xc" name="ACTIVE" rw="R" values="BOD_ACTIVE"/>
@@ -673,7 +661,7 @@
         <value caption="VLM threshold 25% above BOD level" name="25ABOVE" value="0x2"/>
       </value-group>
     </module>
-    <module caption="Configurable Custom Logic" id="I2128" name="CCL">
+    <module caption="Configurable Custom Logic" id="cla_ccl_v1" name="CCL">
       <register-group caption="Configurable Custom Logic" name="CCL" size="0x40">
         <register caption="Control Register A" initval="0x00" name="CTRLA" offset="0x00" rw="RW" size="1">
           <bitfield caption="Enable" mask="0x1" name="ENABLE" rw="RW"/>
@@ -686,7 +674,7 @@
           <bitfield caption="Interrupt Mode for LUT3" mask="0xc0" name="INTMODE3" rw="RW" values="CCL_INTMODE3"/>
         </register>
         <register caption="Interrupt Flags" initval="0x00" name="INTFLAGS" offset="0x07" rw="RW" size="1">
-          <bitfield caption="Interrupt Flags" mask="0xf" name="INT" rw="RW"/>
+          <bitfield caption="Interrupt Flag" mask="0xf" name="INT" rw="RW"/>
         </register>
         <register caption="LUT Control 0 A" initval="0x00" name="LUT0CTRLA" offset="0x08" rw="RW" size="1">
           <bitfield caption="Clock Source Selection" mask="0xe" name="CLKSRC" rw="RW" values="CCL_CLKSRC"/>
@@ -814,7 +802,7 @@
         <value caption="Linked LUT input source" name="LINK" value="0x02"/>
         <value caption="Event input source A" name="EVENTA" value="0x03"/>
         <value caption="Event input source B" name="EVENTB" value="0x04"/>
-        <value caption="IO pin LUTn-N1 input source" name="IO" value="0x05"/>
+        <value caption="IO pin LUTn-IN1 input source" name="IO" value="0x05"/>
         <value caption="AC0 OUT input source" name="AC0" value="0x06"/>
         <value caption="USART1 TXD input source" name="USART1" value="0x08"/>
         <value caption="SPI0 MOSI input source" name="SPI0" value="0x09"/>
@@ -847,7 +835,7 @@
         <value caption="RS Latch" name="RS" value="0x04"/>
       </value-group>
     </module>
-    <module caption="Clock controller" id="I2113" name="CLKCTRL">
+    <module caption="Clock controller" id="chip" name="CLKCTRL">
       <register-group caption="Clock controller" name="CLKCTRL" size="0x20">
         <register caption="MCLK Control A" initval="0x00" name="MCLKCTRLA" offset="0x00" rw="RW" size="1">
           <bitfield caption="System clock out" mask="0x80" name="CLKOUT" rw="RW"/>
@@ -913,12 +901,11 @@
         <value caption="64k cycles" name="64K" value="0x03"/>
       </value-group>
     </module>
-    <module caption="CPU" id="I2100" name="CPU">
+    <module caption="CPU" id="cpu_avr_v2" name="CPU">
       <register-group caption="CPU" name="CPU" size="0x10">
         <register caption="Configuration Change Protection" initval="0x00" name="CCP" offset="0x4" rw="RW" size="1">
           <bitfield caption="CCP signature" mask="0xff" name="CCP" rw="RW" values="CPU_CCP"/>
         </register>
-        <register caption="Extended Z-pointer Register" name="RAMPZ" offset="0xB" rw="RW" size="1"/>
         <register caption="Stack Pointer High" name="SPH" offset="0xE" rw="RW" size="1"/>
         <register caption="Stack Pointer Low" name="SPL" offset="0xD" rw="RW" size="1"/>
         <register caption="Status Register" initval="0x00" name="SREG" offset="0xF" rw="RW" size="1">
@@ -937,7 +924,7 @@
         <value caption="IO Register Protection" name="IOREG" value="0xD8"/>
       </value-group>
     </module>
-    <module caption="Interrupt Controller" id="I2104" name="CPUINT">
+    <module caption="Interrupt Controller" id="int_8bit_v3" name="CPUINT">
       <register-group caption="Interrupt Controller" name="CPUINT" size="0x4">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Compact Vector Table" mask="0x20" name="CVT" rw="RW"/>
@@ -957,7 +944,7 @@
         </register>
       </register-group>
     </module>
-    <module caption="CRCSCAN" id="I2122" name="CRCSCAN">
+    <module caption="CRCSCAN" id="math_pdi_crc_avr_v1" name="CRCSCAN">
       <register-group caption="CRCSCAN" name="CRCSCAN" size="0x4">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Enable CRC scan" mask="0x1" name="ENABLE" rw="RW"/>
@@ -978,7 +965,7 @@
         <value caption="CRC on boot section of flash" name="BOOT" value="0x2"/>
       </value-group>
     </module>
-    <module caption="Event System" id="I2118" name="EVSYS">
+    <module caption="Event System" id="ev_ctrl_v1" name="EVSYS">
       <register-group caption="Event System" name="EVSYS" size="0x40">
         <register caption="Multiplexer Channel 0" initval="0x00" name="CHANNEL0" offset="0x10" rw="RW" size="1">
           <bitfield caption="Channel 0 generator select" mask="0xff" name="CHANNEL0" rw="RW" values="EVSYS_CHANNEL0"/>
@@ -1084,6 +1071,10 @@
         <value caption="Port A Pin 5" name="PORTA_PIN5" value="0x45"/>
         <value caption="Port A Pin 6" name="PORTA_PIN6" value="0x46"/>
         <value caption="Port A Pin 7" name="PORTA_PIN7" value="0x47"/>
+        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x48"/>
+        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x49"/>
+        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x4A"/>
+        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x4B"/>
         <value caption="USART 0 XCK" name="USART0_XCK" value="0x60"/>
         <value caption="USART 1 XCK" name="USART1_XCK" value="0x61"/>
         <value caption="SPI 0 Sclock" name="SPI0_SCK" value="0x68"/>
@@ -1096,14 +1087,6 @@
         <value caption="Timer/Counter B0 overflow" name="TCB0_OVF" value="0xA1"/>
         <value caption="Timer/Counter B1 capture" name="TCB1_CAPT" value="0xA2"/>
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
-        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x48"/>
-        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x49"/>
-        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x4A"/>
-        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x4B"/>
-        <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x4C"/>
-        <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x4D"/>
-        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x4E"/>
-        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x4F"/>
       </value-group>
       <value-group caption="Channel 1 generator select select" name="EVSYS_CHANNEL1">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1130,6 +1113,10 @@
         <value caption="Port A Pin 5" name="PORTA_PIN5" value="0x45"/>
         <value caption="Port A Pin 6" name="PORTA_PIN6" value="0x46"/>
         <value caption="Port A Pin 7" name="PORTA_PIN7" value="0x47"/>
+        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x48"/>
+        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x49"/>
+        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x4A"/>
+        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x4B"/>
         <value caption="USART 0 XCK" name="USART0_XCK" value="0x60"/>
         <value caption="USART 1 XCK" name="USART1_XCK" value="0x61"/>
         <value caption="SPI 0 Sclock" name="SPI0_SCK" value="0x68"/>
@@ -1142,14 +1129,6 @@
         <value caption="Timer/Counter B0 overflow" name="TCB0_OVF" value="0xA1"/>
         <value caption="Timer/Counter B1 capture" name="TCB1_CAPT" value="0xA2"/>
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
-        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x48"/>
-        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x49"/>
-        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x4A"/>
-        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x4B"/>
-        <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x4C"/>
-        <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x4D"/>
-        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x4E"/>
-        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x4F"/>
       </value-group>
       <value-group caption="Channel 2 generator select select" name="EVSYS_CHANNEL2">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1244,6 +1223,10 @@
         <value caption="ADC 0 Result ready event" name="ADC0_RES" value="0x24"/>
         <value caption="ADC 0 Sample ready event" name="ADC0_SAMP" value="0x25"/>
         <value caption="ADC 0 Window compare match event" name="ADC0_WCMP" value="0x26"/>
+        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x40"/>
+        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x41"/>
+        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x42"/>
+        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x43"/>
         <value caption="USART 0 XCK" name="USART0_XCK" value="0x60"/>
         <value caption="USART 1 XCK" name="USART1_XCK" value="0x61"/>
         <value caption="SPI 0 Sclock" name="SPI0_SCK" value="0x68"/>
@@ -1256,14 +1239,6 @@
         <value caption="Timer/Counter B0 overflow" name="TCB0_OVF" value="0xA1"/>
         <value caption="Timer/Counter B1 capture" name="TCB1_CAPT" value="0xA2"/>
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
-        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x40"/>
-        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x41"/>
-        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x42"/>
-        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x43"/>
-        <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x44"/>
-        <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x45"/>
-        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x46"/>
-        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x47"/>
       </value-group>
       <value-group caption="Channel 5 generator select select" name="EVSYS_CHANNEL5">
         <value caption="Off" name="OFF" value="0x0"/>
@@ -1282,6 +1257,10 @@
         <value caption="ADC 0 Result ready event" name="ADC0_RES" value="0x24"/>
         <value caption="ADC 0 Sample ready event" name="ADC0_SAMP" value="0x25"/>
         <value caption="ADC 0 Window compare match event" name="ADC0_WCMP" value="0x26"/>
+        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x40"/>
+        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x41"/>
+        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x42"/>
+        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x43"/>
         <value caption="USART 0 XCK" name="USART0_XCK" value="0x60"/>
         <value caption="USART 1 XCK" name="USART1_XCK" value="0x61"/>
         <value caption="SPI 0 Sclock" name="SPI0_SCK" value="0x68"/>
@@ -1294,14 +1273,6 @@
         <value caption="Timer/Counter B0 overflow" name="TCB0_OVF" value="0xA1"/>
         <value caption="Timer/Counter B1 capture" name="TCB1_CAPT" value="0xA2"/>
         <value caption="Timer/Counter B1 overflow" name="TCB1_OVF" value="0xA3"/>
-        <value caption="Port B Pin 0" name="PORTB_PIN0" value="0x40"/>
-        <value caption="Port B Pin 1" name="PORTB_PIN1" value="0x41"/>
-        <value caption="Port B Pin 2" name="PORTB_PIN2" value="0x42"/>
-        <value caption="Port B Pin 3" name="PORTB_PIN3" value="0x43"/>
-        <value caption="Port B Pin 4" name="PORTB_PIN4" value="0x44"/>
-        <value caption="Port B Pin 5" name="PORTB_PIN5" value="0x45"/>
-        <value caption="Port B Pin 6" name="PORTB_PIN6" value="0x46"/>
-        <value caption="Port B Pin 7" name="PORTB_PIN7" value="0x47"/>
       </value-group>
       <value-group caption="Software event on channel select" name="EVSYS_SWEVENTA">
         <value caption="Software event on channel 0" name="CH0" value="0x01"/>
@@ -1321,7 +1292,7 @@
         <value caption="Connect user to event channel 5" name="CHANNEL5" value="0x6"/>
       </value-group>
     </module>
-    <module caption="Fuses" id="I2600" name="FUSE">
+    <module caption="Fuses" id="chip" name="FUSE">
       <register-group caption="Fuses" name="FUSE" size="0x09">
         <register caption="Application Code Section End" initval="0x00" name="APPEND" offset="0x7" rw="RW" size="1"/>
         <register caption="BOD Configuration" initval="0x00" name="BODCFG" offset="0x1" rw="RW" size="1">
@@ -1423,15 +1394,15 @@
         <value caption="8K cycles (8.2s)" name="8KCLK" value="0x0B"/>
       </value-group>
     </module>
-    <module caption="General Purpose IO" id="I2600" name="GPIO">
-      <register-group caption="General Purpose IO" name="GPIO" size="0x4">
+    <module caption="General Purpose I/O Register" id="chip" name="GPIO">
+      <register-group caption="General Purpose I/O Register" name="GPIO" size="0x4">
         <register caption="General Purpose IO Register 0" name="GPIOR0" offset="0x0" rw="RW" size="1"/>
         <register caption="General Purpose IO Register 1" name="GPIOR1" offset="0x1" rw="RW" size="1"/>
         <register caption="General Purpose IO Register 2" name="GPIOR2" offset="0x2" rw="RW" size="1"/>
         <register caption="General Purpose IO Register 3" name="GPIOR3" offset="0x3" rw="RW" size="1"/>
       </register-group>
     </module>
-    <module caption="Lockbit" id="I2600" name="LOCKBIT">
+    <module caption="Lockbit" id="chip" name="LOCKBIT">
       <register-group caption="Lockbit" name="LOCKBIT" size="0x2">
         <register caption="Lock Bits" initval="0xC5" name="LOCKBIT" offset="0x0" rw="RW" size="1">
           <bitfield caption="Lock Bits" mask="0xff" name="LB" rw="RW" values="LOCKBIT_LB"/>
@@ -1442,7 +1413,7 @@
         <value caption="No locks" name="NOLOCK" value="0xC5"/>
       </value-group>
     </module>
-    <module caption="BIST in the NVMCTRL module" id="I2109" name="NVMBIST">
+    <module caption="BIST in the NVMCTRL module" id="nvm_ctrl_avr_v2" name="NVMBIST">
       <register-group caption="BIST in the NVMCTRL module" name="NVMBIST" size="0x10">
         <register caption="Address pattern" initval="0x00" name="ADDRPAT" offset="0x1" rw="RW" size="1">
           <bitfield caption="Address mode" mask="0x70" name="AMODE" rw="RW" values="NVMBIST_AMODE"/>
@@ -1510,7 +1481,7 @@
         <value caption="Count faults in last word" name="FINISH1" value="0xF"/>
       </value-group>
     </module>
-    <module caption="Non-volatile Memory Controller" id="I2109" name="NVMCTRL">
+    <module caption="Non-volatile Memory Controller" id="nvm_ctrl_avr_v2" name="NVMCTRL">
       <register-group caption="Non-volatile Memory Controller" name="NVMCTRL" size="0x10">
         <register caption="Address" name="ADDR" offset="0x8" rw="RW" size="2"/>
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
@@ -1544,7 +1515,7 @@
         <value caption="Write fuse (PDI only)" name="FUSEWRITE" value="0x07"/>
       </value-group>
     </module>
-    <module caption="I/O Ports" id="I2103" name="PORT">
+    <module caption="I/O Ports" id="gpio_ports_avr_v1" name="PORT">
       <register-group caption="I/O Ports" name="PORT" size="0x20">
         <register caption="Data Direction" name="DIR" offset="0x00" rw="RW" size="1"/>
         <register caption="Data Direction Clear" name="DIRCLR" offset="0x02" rw="RW" size="1"/>
@@ -1611,13 +1582,13 @@
         <value caption="Sense low Level" name="LEVEL" value="0x5"/>
       </value-group>
     </module>
-    <module caption="Port Multiplexer" id="I2600" name="PORTMUX">
+    <module caption="Port Multiplexer" id="chip" name="PORTMUX">
       <register-group caption="Port Multiplexer" name="PORTMUX" size="0x10">
         <register caption="Port Multiplexer CCL" initval="0x00" name="CCLROUTEA" offset="0x1" rw="RW" size="1">
-          <bitfield caption="CCL LUT0" mask="0x1" name="LUT0" rw="RW"/>
-          <bitfield caption="CCL LUT1" mask="0x2" name="LUT1" rw="RW"/>
-          <bitfield caption="CCL LUT2" mask="0x4" name="LUT2" rw="RW"/>
-          <bitfield caption="CCL LUT3" mask="0x8" name="LUT3" rw="RW"/>
+          <bitfield caption="CCL LUT0" mask="0x1" name="LUT0" rw="RW" values="PORTMUX_LUT0"/>
+          <bitfield caption="CCL LUT1" mask="0x2" name="LUT1" rw="RW" values="PORTMUX_LUT1"/>
+          <bitfield caption="CCL LUT2" mask="0x4" name="LUT2" rw="RW" values="PORTMUX_LUT2"/>
+          <bitfield caption="CCL LUT3" mask="0x8" name="LUT3" rw="RW" values="PORTMUX_LUT3"/>
         </register>
         <register caption="Port Multiplexer EVSYS" initval="0x00" name="EVSYSROUTEA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Event Output A" mask="0x1" name="EVOUTA" rw="RW" values="PORTMUX_EVOUTA"/>
@@ -1626,65 +1597,86 @@
         </register>
         <register caption="Port Multiplexer TWI and SPI" initval="0x00" name="SPIROUTEA" offset="0x3" rw="RW" size="1">
           <bitfield caption="Port Multiplexer SPI0" mask="0x3" name="SPI0" rw="RW" values="PORTMUX_SPI0"/>
-          <bitfield caption="Port Multiplexer TWI0" mask="0x30" name="TWI0" rw="RW" values="PORTMUX_TWI0"/>
         </register>
         <register caption="Port Multiplexer TCA" initval="0x00" name="TCAROUTEA" offset="0x4" rw="RW" size="1">
-          <bitfield caption="Port Multiplexer TCA0" mask="0x7" name="TCA0" rw="RW" values="PORTMUX_TCA0"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 0" mask="0x1" name="TCA00" rw="RW" values="PORTMUX_TCA00"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 1" mask="0x2" name="TCA01" rw="RW" values="PORTMUX_TCA01"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 2" mask="0x4" name="TCA02" rw="RW" values="PORTMUX_TCA02"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 3" mask="0x8" name="TCA03" rw="RW" values="PORTMUX_TCA03"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 4" mask="0x10" name="TCA04" rw="RW" values="PORTMUX_TCA04"/>
+          <bitfield caption="Port Multiplexer TCA0 Output 5" mask="0x20" name="TCA05" rw="RW" values="PORTMUX_TCA05"/>
         </register>
         <register caption="Port Multiplexer TCB" initval="0x00" name="TCBROUTEA" offset="0x5" rw="RW" size="1">
-          <bitfield caption="Port Multiplexer TCB0" mask="0x1" name="TCB0" rw="RW"/>
-          <bitfield caption="Port Multiplexer TCB1" mask="0x2" name="TCB1" rw="RW"/>
-          <bitfield caption="Port Multiplexer TCB2" mask="0x4" name="TCB2" rw="RW"/>
-          <bitfield caption="Port Multiplexer TCB3" mask="0x8" name="TCB3" rw="RW"/>
+          <bitfield caption="Port Multiplexer TCB0" mask="0x1" name="TCB0" rw="RW" values="PORTMUX_TCB0"/>
+          <bitfield caption="Port Multiplexer TCB1" mask="0x2" name="TCB1" rw="RW" values="PORTMUX_TCB1"/>
         </register>
         <register caption="Port Multiplexer USART register A" initval="0x00" name="USARTROUTEA" offset="0x2" rw="RW" size="1">
           <bitfield caption="Port Multiplexer USART0" mask="0x3" name="USART0" rw="RW" values="PORTMUX_USART0"/>
           <bitfield caption="Port Multiplexer USART1" mask="0xc" name="USART1" rw="RW" values="PORTMUX_USART1"/>
         </register>
       </register-group>
+      <value-group caption="CCL LUT0 select" name="PORTMUX_LUT0">
+        <value caption="Out: PA4 In: PA0, PA1, PA2" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="CCL LUT1 select" name="PORTMUX_LUT1">
+        <value caption="Out: PA7 In: PC3, PC4, PC5" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="CCL LUT2 select" name="PORTMUX_LUT2">
+        <value caption="Out: PB3 In: PB0, PB1, PB2" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="CCL LUT3 select" name="PORTMUX_LUT3">
+        <value caption="Out: PA5 In: PC0, PC1, PC2" name="ALT1" value="0x1"/>
+      </value-group>
       <value-group caption="Event Output A select" name="PORTMUX_EVOUTA">
         <value caption="EVOUT on PA2" name="DEFAULT" value="0x0"/>
         <value caption="EVOUT on PA7" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Event Output B select" name="PORTMUX_EVOUTB">
         <value caption="EVOUT on PB2" name="DEFAULT" value="0x0"/>
-        <value caption="EVOUT on PB7" name="ALT1" value="0x1"/>
       </value-group>
       <value-group caption="Event Output C select" name="PORTMUX_EVOUTC">
         <value caption="EVOUT on PC2" name="DEFAULT" value="0x0"/>
       </value-group>
       <value-group caption="Port Multiplexer SPI0 select" name="PORTMUX_SPI0">
-        <value caption="SPI0 on PA[7:4]" name="DEFAULT" value="0x0"/>
-        <value caption="SPI0 on PC[3:0]" name="ALT1" value="0x1"/>
-        <value caption="SPI0 on PE[3:0]" name="ALT2" value="0x2"/>
+        <value caption="PA0, PA1, PA2, PA3" name="DEFAULT" value="0x0"/>
         <value caption="Not connected to any pins" name="NONE" value="0x3"/>
       </value-group>
-      <value-group caption="Port Multiplexer TWI0 select" name="PORTMUX_TWI0">
-        <value caption="SCL/SDA on PA[3:2], Slave mode on PC[3:2] in dual TWI mode" name="DEFAULT" value="0x0"/>
-        <value caption="SCL/SDA on PA[3:2], Slave mode on PF[3:2] in dual TWI mode" name="ALT1" value="0x1"/>
-        <value caption="SCL/SDA on PC[3:2], Slave mode on PF[3:2] in dual TWI mode" name="ALT2" value="0x2"/>
-        <value caption="Not connected to any pins" name="NONE" value="0x3"/>
+      <value-group caption="Port Multiplexer TCA0 Output 0 select" name="PORTMUX_TCA00">
+        <value caption="WO0 on PB0" name="DEFAULT" value="0x0"/>
+        <value caption="WO0 on PB3" name="ALT1" value="0x1"/>
       </value-group>
-      <value-group caption="Port Multiplexer TCA0 select" name="PORTMUX_TCA0">
-        <value caption="TCA0 pins on PA[5:0]" name="PORTA" value="0x0"/>
-        <value caption="TCA0 pins on PB[5:0]" name="PORTB" value="0x1"/>
-        <value caption="TCA0 pins on PC[5:0]" name="PORTC" value="0x2"/>
-        <value caption="TCA0 pins on PD[5:0]" name="PORTD" value="0x3"/>
-        <value caption="TCA0 pins on PE[5:0]" name="PORTE" value="0x4"/>
-        <value caption="TCA0 pins on PF[5:0]" name="PORTF" value="0x5"/>
+      <value-group caption="Port Multiplexer TCA0 Output 1 select" name="PORTMUX_TCA01">
+        <value caption="WO1 on PB1" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCA0 Output 2 select" name="PORTMUX_TCA02">
+        <value caption="WO2 on PB2" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCA0 Output 3 select" name="PORTMUX_TCA03">
+        <value caption="WO3 on PA3" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCA0 Output 4 select" name="PORTMUX_TCA04">
+        <value caption="WO4 on PA4" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCA0 Output 5 select" name="PORTMUX_TCA05">
+        <value caption="WO5 on PA5" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCB0 select" name="PORTMUX_TCB0">
+        <value caption="WO on PA5" name="DEFAULT" value="0x0"/>
+      </value-group>
+      <value-group caption="Port Multiplexer TCB1 select" name="PORTMUX_TCB1">
+        <value caption="WO on PA3" name="DEFAULT" value="0x0"/>
       </value-group>
       <value-group caption="Port Multiplexer USART0 select" name="PORTMUX_USART0">
-        <value caption="USART0 on PA[3:0]" name="DEFAULT" value="0x0"/>
-        <value caption="USART0 on PA[7:4]" name="ALT1" value="0x1"/>
+        <value caption="USART0 on PB[3:0]" name="DEFAULT" value="0x0"/>
+        <value caption="USART0 on PA[4:1]" name="ALT1" value="0x1"/>
         <value caption="Not connected to any pins" name="NONE" value="0x3"/>
       </value-group>
       <value-group caption="Port Multiplexer USART1 select" name="PORTMUX_USART1">
-        <value caption="USART1 on PC[3:0]" name="DEFAULT" value="0x0"/>
-        <value caption="USART1 on PC[7:4]" name="ALT1" value="0x1"/>
+        <value caption="USART1 on PA[4:1]" name="DEFAULT" value="0x0"/>
         <value caption="Not connected to any pins" name="NONE" value="0x3"/>
       </value-group>
     </module>
-    <module caption="Reset controller" id="I2111" name="RSTCTRL">
+    <module caption="Reset controller" id="rst_integration_avr_v1" name="RSTCTRL">
       <register-group caption="Reset controller" name="RSTCTRL" size="0x4">
         <register caption="Reset Flags" initval="0x00" name="RSTFR" offset="0x0" rw="RW" size="1">
           <bitfield caption="Brown out detector Reset flag" mask="0x2" name="BORF" rw="RW"/>
@@ -1699,14 +1691,14 @@
         </register>
       </register-group>
     </module>
-    <module caption="Real-Time Counter" id="I2116" name="RTC">
+    <module caption="Real-Time Counter" id="tmr_16b_rtc_v1" name="RTC">
       <register-group caption="Real-Time Counter" name="RTC" size="0x20">
         <register caption="Calibration" initval="0x00" name="CALIB" offset="0x06" rw="RW" size="1">
           <bitfield caption="Error Correction Value" mask="0x7f" name="ERROR" rw="RW"/>
           <bitfield caption="Error Correction Sign Bit" mask="0x80" name="SIGN" rw="RW"/>
         </register>
-        <register caption="RTC Clock" initval="0x00" name="CLKSEL" offset="0x07" rw="RW" size="1">
-          <bitfield caption="Clock" mask="0x3" name="CLKSEL" rw="RW" values="RTC_CLKSEL"/>
+        <register caption="Clock Select" initval="0x00" name="CLKSEL" offset="0x07" rw="RW" size="1">
+          <bitfield caption="Clock Select" mask="0x3" name="CLKSEL" rw="RW" values="RTC_CLKSEL"/>
         </register>
         <register caption="Compare" name="CMP" offset="0x0C" rw="RW" size="2"/>
         <register caption="Counter" name="CNT" offset="0x08" rw="RW" size="2"/>
@@ -1752,11 +1744,11 @@
         </register>
         <register caption="Temporary" name="TEMP" offset="0x04" rw="RW" size="1"/>
       </register-group>
-      <value-group caption="Clock select" name="RTC_CLKSEL">
-        <value caption="Internal 32kHz OSC" name="INT32K" value="0x00"/>
-        <value caption="Internal 1kHz OSC" name="INT1K" value="0x01"/>
-        <value caption="32KHz Crystal OSC" name="TOSC32K" value="0x02"/>
-        <value caption="External Clock" name="EXTCLK" value="0x03"/>
+      <value-group caption="Clock Select select" name="RTC_CLKSEL">
+        <value caption="Internal 32kHz OSC" name="INT32K" value="0x0"/>
+        <value caption="Internal 1kHz OSC" name="INT1K" value="0x1"/>
+        <value caption="32KHz Crystal OSC" name="TOSC32K" value="0x2"/>
+        <value caption="External Clock" name="EXTCLK" value="0x3"/>
       </value-group>
       <value-group caption="Prescaling Factor select" name="RTC_PRESCALER">
         <value caption="RTC Clock / 1" name="DIV1" value="0x00"/>
@@ -1794,7 +1786,7 @@
         <value caption="RTC Clock Cycles 32768" name="CYC32768" value="0x0E"/>
       </value-group>
     </module>
-    <module caption="Signature row" id="I2600" name="SIGROW">
+    <module caption="Signature row" id="chip" name="SIGROW">
       <register-group caption="Signature row" name="SIGROW" size="0x40">
         <register caption="CRC Checksum Byte 1" name="CHECKSUM1" offset="0x2F" rw="R" size="1"/>
         <register caption="Device ID Byte 0" name="DEVICEID0" offset="0x00" rw="R" size="1"/>
@@ -1823,7 +1815,7 @@
         <register caption="Temperature Sensor Calibration Byte 1" name="TEMPSENSE1" offset="0x21" rw="R" size="1"/>
       </register-group>
     </module>
-    <module caption="Sleep Controller" id="I2112" name="SLPCTRL">
+    <module caption="Sleep Controller" id="clk_sleep_ctrl_avr_v1" name="SLPCTRL">
       <register-group caption="Sleep Controller" name="SLPCTRL" size="0x2">
         <register caption="Control" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Sleep enable" mask="0x1" name="SEN" rw="RW"/>
@@ -1836,7 +1828,7 @@
         <value caption="Power-down Mode" name="PDOWN" value="0x02"/>
       </value-group>
     </module>
-    <module caption="Serial Peripheral Interface" id="I2107" name="SPI">
+    <module caption="Serial Peripheral Interface" id="spi_8bit_v2" name="SPI">
       <register-group caption="Serial Peripheral Interface" name="SPI" size="0x8">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Enable Double Speed" mask="0x10" name="CLK2X" rw="RW"/>
@@ -1867,7 +1859,7 @@
             <bitfield caption="Slave Select Trigger Interrupt Flag" mask="0x10" name="SSIF" rw="RW"/>
             <bitfield caption="Transfer Complete Interrupt Flag" mask="0x40" name="TXCIF" rw="RW"/>
           </mode>
-          <mode name="NORMAL">
+          <mode name="DEFAULT">
             <bitfield caption="Interrupt Flag" mask="0x80" name="IF" rw="RW"/>
             <bitfield caption="Write Collision" mask="0x40" name="WRCOL" rw="RW"/>
           </mode>
@@ -1886,7 +1878,7 @@
         <value caption="SPI Mode 3" name="3" value="0x03"/>
       </value-group>
     </module>
-    <module caption="System Configuration Registers" id="I2600" name="SYSCFG">
+    <module caption="System Configuration Registers" id="chip" name="SYSCFG">
       <register-group caption="System Configuration Registers" name="SYSCFG" size="0x20">
         <register caption="External Break" initval="0x00" name="EXTBRK" offset="0x02" rw="RW" size="1">
           <bitfield caption="External break enable" mask="0x1" name="ENEXTBRK" rw="RW"/>
@@ -1898,7 +1890,7 @@
         <register caption="Revision ID" name="REVID" offset="0x01" rw="RW" size="1"/>
       </register-group>
     </module>
-    <module caption="16-bit Timer/Counter Type A" id="I2117" name="TCA">
+    <module caption="16-bit Timer/Counter Type A" id="tmr_16b_pwm_v1" name="TCA">
       <register-group caption="16-bit Timer/Counter Type A - Single Mode" name="TCA_SINGLE" size="0x40">
         <register caption="Compare 0" name="CMP0" offset="0x28" rw="RW" size="2"/>
         <register caption="Compare 0 Buffer" name="CMP0BUF" offset="0x38" rw="RW" size="2"/>
@@ -2097,16 +2089,16 @@
       </value-group>
       <value-group caption="Command Enable select" name="TCA_SPLIT_CMDEN">
         <value caption="None" name="NONE" value="0x0"/>
-        <value caption="Both low byte and high byte" name="BOTH" value="0x3"/>
+        <value caption="Both low byte and high byte counter" name="BOTH" value="0x3"/>
       </value-group>
     </module>
-    <module caption="16-bit Timer Type B" id="I2119" name="TCB">
+    <module caption="16-bit Timer Type B" id="tmr_16b_capture_v1" name="TCB">
       <register-group caption="16-bit Timer Type B" name="TCB" size="0x10">
         <register caption="Compare or Capture" name="CCMP" offset="0xC" rw="RW" size="2"/>
         <register caption="Count" initval="0x0000" name="CNT" offset="0xA" rw="RW" size="2"/>
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Cascade two timers" mask="0x20" name="CASCADE" rw="RW"/>
-          <bitfield caption="TCB Clock" mask="0xe" name="CLKSEL" rw="RW" values="TCB_CLKSEL"/>
+          <bitfield caption="Clock Select" mask="0xe" name="CLKSEL" rw="RW" values="TCB_CLKSEL"/>
           <bitfield caption="Enable" mask="0x1" name="ENABLE" rw="RW"/>
           <bitfield caption="Run Standby" mask="0x40" name="RUNSTDBY" rw="RW"/>
           <bitfield caption="Synchronize Update" mask="0x10" name="SYNCUPD" rw="RW"/>
@@ -2138,8 +2130,8 @@
         </register>
         <register caption="Temporary Value" name="TEMP" offset="0x9" rw="RW" size="1"/>
       </register-group>
-      <value-group caption="TCB Clock select" name="TCB_CLKSEL">
-        <value caption="CLK_PEP" name="DIV1" value="0x00"/>
+      <value-group caption="Clock Select select" name="TCB_CLKSEL">
+        <value caption="CLK_PER" name="DIV1" value="0x00"/>
         <value caption="CLK_PER/2" name="DIV2" value="0x01"/>
         <value caption="Use CLK_TCA from TCA0" name="TCA0" value="0x02"/>
         <value caption="Count on event edge" name="EVENT" value="0x07"/>
@@ -2155,11 +2147,11 @@
         <value caption="8-bit PWM" name="PWM8" value="0x07"/>
       </value-group>
     </module>
-    <module caption="Two-Wire Interface" id="I2110" name="TWI">
+    <module caption="Two-Wire Interface" id="i2c_8bit_avr_v1" name="TWI">
       <register-group caption="Two-Wire Interface" name="TWI" size="0x10">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <mode name="DEFAULT">
-            <bitfield caption="FM Plus Enable" mask="0x2" name="FMPEN" rw="RW"/>
+            <bitfield caption="Fast-mode Plus Enable" mask="0x2" name="FMPEN" rw="RW"/>
             <bitfield caption="SDA Hold Time" mask="0xc" name="SDAHOLD" rw="RW" values="TWI_DEFAULT_SDAHOLD"/>
             <bitfield caption="SDA Setup Time" mask="0x10" name="SDASETUP" rw="RW" values="TWI_DEFAULT_SDASETUP"/>
           </mode>
@@ -2265,7 +2257,7 @@
         <value caption="Address detection generated APIF" name="ADR" value="0x1"/>
       </value-group>
     </module>
-    <module caption="Universal Synchronous and Asynchronous Receiver and Transmitter" id="I2108" name="USART">
+    <module caption="Universal Synchronous and Asynchronous Receiver and Transmitter" id="uart_autobd_v4" name="USART">
       <register-group caption="Universal Synchronous and Asynchronous Receiver and Transmitter" name="USART" size="0x10">
         <register caption="Baud Rate" initval="0x0000" name="BAUD" offset="0x8" rw="RW" size="2"/>
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x5" rw="RW" size="1">
@@ -2386,7 +2378,7 @@
         <value caption="25% tolerance" name="WDW3" value="0x3"/>
       </value-group>
     </module>
-    <module caption="User Row" id="I2603" name="USERROW">
+    <module caption="User Row" id="chip" name="USERROW">
       <register-group caption="User Row" name="USERROW" size="0x20">
         <register caption="User Row Byte 0" name="USERROW0" offset="0x00" rw="RW" size="1"/>
         <register caption="User Row Byte 1" name="USERROW1" offset="0x01" rw="RW" size="1"/>
@@ -2420,41 +2412,9 @@
         <register caption="User Row Byte 29" name="USERROW29" offset="0x1D" rw="RW" size="1"/>
         <register caption="User Row Byte 30" name="USERROW30" offset="0x1E" rw="RW" size="1"/>
         <register caption="User Row Byte 31" name="USERROW31" offset="0x1F" rw="RW" size="1"/>
-        <register caption="User Row Byte 32" name="USERROW32" offset="0x20" rw="RW" size="1"/>
-        <register caption="User Row Byte 33" name="USERROW33" offset="0x21" rw="RW" size="1"/>
-        <register caption="User Row Byte 34" name="USERROW34" offset="0x22" rw="RW" size="1"/>
-        <register caption="User Row Byte 35" name="USERROW35" offset="0x23" rw="RW" size="1"/>
-        <register caption="User Row Byte 36" name="USERROW36" offset="0x24" rw="RW" size="1"/>
-        <register caption="User Row Byte 37" name="USERROW37" offset="0x25" rw="RW" size="1"/>
-        <register caption="User Row Byte 38" name="USERROW38" offset="0x26" rw="RW" size="1"/>
-        <register caption="User Row Byte 39" name="USERROW39" offset="0x27" rw="RW" size="1"/>
-        <register caption="User Row Byte 40" name="USERROW40" offset="0x28" rw="RW" size="1"/>
-        <register caption="User Row Byte 41" name="USERROW41" offset="0x29" rw="RW" size="1"/>
-        <register caption="User Row Byte 42" name="USERROW42" offset="0x2A" rw="RW" size="1"/>
-        <register caption="User Row Byte 43" name="USERROW43" offset="0x2B" rw="RW" size="1"/>
-        <register caption="User Row Byte 44" name="USERROW44" offset="0x2C" rw="RW" size="1"/>
-        <register caption="User Row Byte 45" name="USERROW45" offset="0x2D" rw="RW" size="1"/>
-        <register caption="User Row Byte 46" name="USERROW46" offset="0x2E" rw="RW" size="1"/>
-        <register caption="User Row Byte 47" name="USERROW47" offset="0x2F" rw="RW" size="1"/>
-        <register caption="User Row Byte 48" name="USERROW48" offset="0x30" rw="RW" size="1"/>
-        <register caption="User Row Byte 49" name="USERROW49" offset="0x31" rw="RW" size="1"/>
-        <register caption="User Row Byte 50" name="USERROW50" offset="0x32" rw="RW" size="1"/>
-        <register caption="User Row Byte 51" name="USERROW51" offset="0x33" rw="RW" size="1"/>
-        <register caption="User Row Byte 52" name="USERROW52" offset="0x34" rw="RW" size="1"/>
-        <register caption="User Row Byte 53" name="USERROW53" offset="0x35" rw="RW" size="1"/>
-        <register caption="User Row Byte 54" name="USERROW54" offset="0x36" rw="RW" size="1"/>
-        <register caption="User Row Byte 55" name="USERROW55" offset="0x37" rw="RW" size="1"/>
-        <register caption="User Row Byte 56" name="USERROW56" offset="0x38" rw="RW" size="1"/>
-        <register caption="User Row Byte 57" name="USERROW57" offset="0x39" rw="RW" size="1"/>
-        <register caption="User Row Byte 58" name="USERROW58" offset="0x3A" rw="RW" size="1"/>
-        <register caption="User Row Byte 59" name="USERROW59" offset="0x3B" rw="RW" size="1"/>
-        <register caption="User Row Byte 60" name="USERROW60" offset="0x3C" rw="RW" size="1"/>
-        <register caption="User Row Byte 61" name="USERROW61" offset="0x3D" rw="RW" size="1"/>
-        <register caption="User Row Byte 62" name="USERROW62" offset="0x3E" rw="RW" size="1"/>
-        <register caption="User Row Byte 63" name="USERROW63" offset="0x3F" rw="RW" size="1"/>
       </register-group>
     </module>
-    <module caption="Virtual Ports" id="I2103" name="VPORT">
+    <module caption="Virtual Ports" id="gpio_ports_avr_v1" name="VPORT">
       <register-group caption="Virtual Ports" name="VPORT" size="0x4">
         <register caption="Data Direction" name="DIR" offset="0x0" rw="RW" size="1"/>
         <register caption="Input Value" name="IN" offset="0x2" rw="RW" size="1"/>
@@ -2464,7 +2424,7 @@
         <register caption="Output Value" name="OUT" offset="0x1" rw="RW" size="1"/>
       </register-group>
     </module>
-    <module caption="Voltage reference" id="I2600" name="VREF">
+    <module caption="Voltage reference" id="chip" name="VREF">
       <register-group caption="Voltage reference" name="VREF" size="0x2">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="AC0 reference select" mask="0x7" name="AC0REFSEL" rw="RW" values="VREF_AC0REFSEL"/>
@@ -2483,7 +2443,7 @@
         <value caption="voltage reference at supply" name="AVDD" value="0x07"/>
       </value-group>
     </module>
-    <module caption="Watch-Dog Timer" id="I2127" name="WDT">
+    <module caption="Watch-Dog Timer" id="wdt_windowed_avr_v1" name="WDT">
       <register-group caption="Watch-Dog Timer" name="WDT" size="0x2">
         <register caption="Control A" initval="0x00" name="CTRLA" offset="0x0" rw="RW" size="1">
           <bitfield caption="Period" mask="0xf" name="PERIOD" rw="RW" values="WDT_PERIOD"/>
