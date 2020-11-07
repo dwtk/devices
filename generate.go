@@ -163,23 +163,9 @@ func formatBitmask(b byte) string {
 }
 
 func main() {
-	ds, err := findDevices()
+	devices, err := findDevices()
 	if err != nil {
 		log.Fatal(err)
-	}
-
-	devices := []deviceType{}
-	for _, d := range ds {
-		found := false
-		for _, device := range devices {
-			if d.signature == device.signature {
-				found = true
-				break
-			}
-		}
-		if !found {
-			devices = append(devices, d)
-		}
 	}
 
 	f, err := os.Create("mcus.go")
