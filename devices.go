@@ -11,11 +11,20 @@ type MCU struct {
 	signature     uint16
 	flashPageSize uint16
 	flashSize     uint16
-	nrwwStart     uint16
+	nrwwOffset    uint16
 	eepromSize    uint16
+	eear          byte
+	eearSize      byte
+	eedr          byte
+	eedrSize      byte
 	eecr          byte
-	withEEARH     bool
-	withSPH       bool
+	eecrSize      byte
+	spmcsr        byte
+	spmcsrSize    byte
+	sp            byte
+	spSize        byte
+	sreg          byte
+	sregSize      byte
 	dwenMask      byte
 }
 
@@ -44,44 +53,36 @@ func (m *MCU) FlashSize() uint16 {
 	return m.flashSize
 }
 
-func (m *MCU) NRWWStart() uint16 {
-	return m.nrwwStart
+func (m *MCU) NRWWOffset() uint16 {
+	return m.nrwwOffset
 }
 
 func (m *MCU) EEPROMSize() uint16 {
 	return m.eepromSize
 }
 
-func (m *MCU) EECR() SFR {
-	return SFR{m.eecr, 1}
+func (m *MCU) EEAR() SFR {
+	return SFR{m.eear, m.eearSize}
 }
 
 func (m *MCU) EEDR() SFR {
-	return SFR{m.eecr + 1, 1}
+	return SFR{m.eedr, m.eedrSize}
 }
 
-func (m *MCU) EEAR() SFR {
-	s := byte(1)
-	if m.withEEARH {
-		s++
-	}
-	return SFR{m.eecr + 2, s}
+func (m *MCU) EECR() SFR {
+	return SFR{m.eecr, m.eecrSize}
 }
 
 func (m *MCU) SPMCSR() SFR {
-	return SFR{0x57, 1}
+	return SFR{m.spmcsr, m.spmcsrSize}
 }
 
 func (m *MCU) SP() SFR {
-	s := byte(1)
-	if m.withSPH {
-		s++
-	}
-	return SFR{0x5d, s}
+	return SFR{m.sp, m.spSize}
 }
 
 func (m *MCU) SREG() SFR {
-	return SFR{0x5f, 1}
+	return SFR{m.sreg, m.sregSize}
 }
 
 func (m *MCU) DWENMask() byte {
