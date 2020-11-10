@@ -4,6 +4,7 @@ package devices
 
 import (
 	"fmt"
+	"strings"
 )
 
 type MCU struct {
@@ -28,13 +29,27 @@ type MCU struct {
 	dwenMask      byte
 }
 
-func GetMCU(signature uint16) (*MCU, error) {
+func GetAll() []*MCU {
+	return mcus
+}
+
+func GetBySignature(signature uint16) (*MCU, error) {
 	for _, mcu := range mcus {
 		if signature == mcu.signature {
 			return mcu, nil
 		}
 	}
 	return nil, fmt.Errorf("devices: MCU lookup failed for signature: 0x%04x", signature)
+}
+
+func GetByName(name string) (*MCU, error) {
+	lcName := strings.ToLower(name)
+	for _, mcu := range mcus {
+		if lcName == strings.ToLower(mcu.name) {
+			return mcu, nil
+		}
+	}
+	return nil, fmt.Errorf("devices: MCU lookup failed for name: %s", name)
 }
 
 func (m *MCU) Name() string {
