@@ -632,8 +632,8 @@
         <value caption="Running, CLK/64" name="VAL_0x03" value="0x03"/>
         <value caption="Running, CLK/256" name="VAL_0x04" value="0x04"/>
         <value caption="Running, CLK/1024" name="VAL_0x05" value="0x05"/>
-        <value caption="Running, ExtClk Tx Falling Edge" name="VAL_0x06" value="0x06"/>
-        <value caption="Running, ExtClk Tx Rising Edge" name="VAL_0x07" value="0x07"/>
+        <value caption="Running, ExtClk Tn Falling Edge" name="VAL_0x06" value="0x06"/>
+        <value caption="Running, ExtClk Tn Rising Edge" name="VAL_0x07" value="0x07"/>
       </value-group>
     </module>
     <module caption="Timer/Counter, 16-bit" name="TC16">
@@ -675,8 +675,8 @@
         <value caption="Running, CLK/64" name="VAL_0x03" value="0x03"/>
         <value caption="Running, CLK/256" name="VAL_0x04" value="0x04"/>
         <value caption="Running, CLK/1024" name="VAL_0x05" value="0x05"/>
-        <value caption="Running, ExtClk Tx Falling Edge" name="VAL_0x06" value="0x06"/>
-        <value caption="Running, ExtClk Tx Rising Edge" name="VAL_0x07" value="0x07"/>
+        <value caption="Running, ExtClk Tn Falling Edge" name="VAL_0x06" value="0x06"/>
+        <value caption="Running, ExtClk Tn Rising Edge" name="VAL_0x07" value="0x07"/>
       </value-group>
     </module>
     <module caption="I/O Port" name="PORT">
