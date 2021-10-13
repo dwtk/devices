@@ -95,7 +95,7 @@ func findDevices() ([]deviceType, error) {
 			if err != nil {
 				continue
 			}
-			if nrwwoffset == 0 || start < nrwwoffset {
+			if nrwwoffset == 0 || start > nrwwoffset {
 				nrwwoffset = start
 			}
 		}
